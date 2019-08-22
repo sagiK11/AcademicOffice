@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.CheckListView?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="640.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="AcademicOffice.CheckListController">
+    <children>
+        <BorderPane prefHeight="640.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <bottom>
+                <AnchorPane prefHeight="91.0" prefWidth="1000.0">
+                    <children>
+                        <Button fx:id="addTaskButton" layoutX="40.0" layoutY="25.0" mnemonicParsing="false" onAction="#addNewTask" prefHeight="28.0" prefWidth="109.0" text="Add New Task!"/>
+                    </children>
+                </AnchorPane>
+            </bottom>
+            <center>
+                <SplitPane dividerPositions="0.5006535947712418" focusTraversable="true" prefHeight="428.0" prefWidth="1000.0">
+                    <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="527.0">
+                            <children>
+                                <Label prefHeight="48.0" prefWidth="472.0" text="Today Tasks" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+                                    <font>
+                                        <Font name="System Bold" size="12.0"/>
+                                    </font>
+                                </Label>
+                                <ScrollPane layoutX="59.0" layoutY="72.0" prefHeight="350.0" prefWidth="280.0">
+                                    <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                                            <children>
+                                                <CheckListView fx:id="todayList" prefHeight="349.0" prefWidth="279.0" AnchorPane.bottomAnchor="-149.0" AnchorPane.leftAnchor="0.0"
+                                                               AnchorPane.rightAnchor="-79.0" AnchorPane.topAnchor="0.0"/>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="499.0" prefWidth="366.0">
+                            <children>
+                                <Label prefHeight="48.0" prefWidth="472.0" text="Previous Tasks" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+                                    <font>
+                                        <Font name="System Bold" size="12.0"/>
+                                    </font>
+                                </Label>
+                                <ScrollPane layoutX="57.0" layoutY="72.0" prefHeight="350.0" prefWidth="280.0">
+                                    <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                                            <children>
+                                                <CheckListView fx:id="previousList" layoutX="0.0" layoutY="0.0" prefHeight="349.0" prefWidth="279.0"/>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                    <BorderPane.margin>
+                        <Insets/>
+                    </BorderPane.margin>
+                </SplitPane>
+            </center>
+            <top>
+                <TextField editable="false" prefHeight="48.0" prefWidth="1000.0" text="Check Lists">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0"/>
+                    </font>
+                </TextField>
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="640.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="AcademicOffice.SettingController">
+    <children>
+        <BorderPane prefHeight="487.0" prefWidth="756.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Label layoutX="56.0" layoutY="65.0" prefHeight="36.0" prefWidth="123.0" text="Student Name"/>
+                        <Label layoutX="56.0" layoutY="110.0" prefHeight="36.0" prefWidth="123.0" text="Student Major"/>
+                        <TextField id="studentNameTextArea" fx:id="studentNameTextField" layoutX="213.0" layoutY="76.0" prefWidth="200.0" promptText="Dany Cohen"/>
+                        <TextField id="studentMajorTextArea" fx:id="studentMajorTextField" layoutX="213.0" layoutY="116.0" prefWidth="200.0" promptText="M.S.c"/>
+                        <Button fx:id="updatePasswordButton" layoutX="629.0" layoutY="349.0" mnemonicParsing="false" onAction="#updateStudentPassword" prefHeight="31.0" prefWidth="74.0" text="Save"/>
+                        <Label layoutX="56.0" layoutY="170.0" prefHeight="36.0" prefWidth="123.0" text="Change Password">
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="302.0" prefHeight="36.0" prefWidth="123.0" text="New Password"/>
+                        <TextField id="studentNameTextArea" fx:id="oldPassTextField" layoutX="213.0" layoutY="219.0" prefWidth="200.0" promptText="pass$1290"/>
+                        <TextField id="studentNameTextArea" fx:id="oldPassConfirmTextField" layoutX="213.0" layoutY="260.0" prefWidth="200.0" promptText="pass$1290"/>
+                        <TextField id="studentNameTextArea" fx:id="newPassTextField" layoutX="213.0" layoutY="308.0" prefWidth="200.0" promptText="pass$1290"/>
+                        <Label layoutX="56.0" layoutY="346.0" prefHeight="36.0" prefWidth="132.0" text="Confirm New Password"/>
+                        <TextField id="studentNameTextArea" fx:id="newPassConfirmTextField" layoutX="213.0" layoutY="351.0" prefWidth="200.0" promptText="pass$1290"/>
+                        <Line endX="548.0" layoutX="154.0" layoutY="165.0" startX="-100.0"/>
+                        <Label layoutX="56.0" layoutY="213.0" prefHeight="36.0" prefWidth="123.0" text="Old Password"/>
+                        <Label layoutX="56.0" layoutY="254.0" prefHeight="36.0" prefWidth="123.0" text="Confirm Old Password"/>
+                        <Line endX="548.0" layoutX="154.0" layoutY="396.0" startX="-100.0"/>
+                        <Label layoutX="56.0" layoutY="22.0" prefHeight="36.0" prefWidth="123.0" text="Student info">
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="userPassFeedBackLabel" layoutX="419.0" layoutY="353.0" prefHeight="24.0" prefWidth="201.0" textFill="#2f16d0"/>
+                        <Button fx:id="updateInfoButton" layoutX="629.0" layoutY="126.0" mnemonicParsing="false" onAction="#updateStudentInfo" prefHeight="31.0" prefWidth="74.0" text="Save"/>
+                        <Label fx:id="userInfoFeedBackLabel" layoutX="498.0" layoutY="129.0" prefHeight="24.0" prefWidth="122.0" textFill="#2f16d0"/>
+                    </children>
+                </AnchorPane>
+            </center>
+            <top>
+                <TextField prefHeight="36.0" prefWidth="756.0" text="Setting">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0"/>
+                    </font>
+                </TextField>
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>

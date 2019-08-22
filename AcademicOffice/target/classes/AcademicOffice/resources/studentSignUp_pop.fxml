@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/2.2" fx:controller="AcademicOffice.SignUpController">
+    <children>
+        <Label layoutX="54.0" layoutY="44.0" text="Username"/>
+        <Label layoutX="54.0" layoutY="81.0" text="Id"/>
+        <Label layoutX="54.0" layoutY="117.0" text="Major"/>
+        <Label layoutX="54.0" layoutY="155.0" text="Password"/>
+        <Label layoutX="54.0" layoutY="192.0" text="Confirm Password"/>
+        <TextField fx:id="userNameTextField" layoutX="182.0" layoutY="44.0" prefWidth="200.0"/>
+        <TextField fx:id="idTextField" layoutX="182.0" layoutY="86.0" prefWidth="200.0"/>
+        <TextField fx:id="majorTextField" layoutX="182.0" layoutY="117.0" prefWidth="200.0"/>
+        <PasswordField fx:id="passTextField" layoutX="182.0" layoutY="155.0" prefWidth="200.0"/>
+        <PasswordField fx:id="confirmPassTextField" layoutX="182.0" layoutY="189.0" prefWidth="200.0"/>
+        <Button layoutX="411.0" layoutY="247.0" mnemonicParsing="false" onAction="#signUp" text="Signup!"/>
+        <Label layoutX="411.0" layoutY="158.0" text="6-12 chars"/>
+        <Label id="passwordInvalid" fx:id="invalidPasswordLabel" layoutX="182.0" layoutY="242.0" text="" textFill="RED"/>
+    </children>
+</AnchorPane>

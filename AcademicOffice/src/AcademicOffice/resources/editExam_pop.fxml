@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.String?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="addExerciseAnchorPane" prefHeight="250.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="AcademicOffice.ExamPopupController">
+    <children>
+        <Label layoutX="61.0" layoutY="66.0" text="Attempt"/>
+        <Label layoutX="61.0" layoutY="107.0" text="Exam Date"/>
+        <TextField fx:id="attemptTextField" layoutX="129.0" layoutY="62.0" prefWidth="141.0"/>
+        <DatePicker fx:id="examDatePicker" editable="false" layoutX="129.0" layoutY="103.0" prefHeight="25.0" prefWidth="141.0" promptText="Select Date"/>
+        <ComboBox fx:id="passedComboBox" layoutX="313.0" layoutY="62.0" promptText="Passed?">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Item 1"/>
+                    <String fx:value="Item 2"/>
+                    <String fx:value="Item 3"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label layoutX="61.0" layoutY="142.0" text="Grade"/>
+        <Slider fx:id="gradeSlider" layoutX="130.0" layoutY="150.0" majorTickUnit="10.0" min="60.0" showTickLabels="true" showTickMarks="true"/>
+        <Button layoutX="313.0" layoutY="195.0" mnemonicParsing="false" onAction="#getFieldsObject" prefHeight="25.0" prefWidth="84.0" text="Save"/>
+    </children>
+</AnchorPane>

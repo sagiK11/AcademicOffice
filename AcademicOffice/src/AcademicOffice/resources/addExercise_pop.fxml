@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.String?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="addExerciseAnchorPane" prefHeight="300.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="AcademicOffice.ExercisePopupController">
+    <children>
+        <Label layoutX="61.0" layoutY="62.0" text="Name"/>
+        <Label layoutX="61.0" layoutY="107.0" text="Weight"/>
+        <Label layoutX="61.0" layoutY="150.0" text="Due Date"/>
+        <TextField fx:id="nameTextField" layoutX="129.0" layoutY="62.0" prefWidth="141.0"/>
+        <TextField fx:id="weightTextField" layoutX="129.0" layoutY="107.0" prefWidth="141.0"/>
+        <DatePicker fx:id="dueDatePicker" editable="false" layoutX="130.0" layoutY="146.0" prefHeight="25.0" prefWidth="141.0" promptText="Select Date"/>
+        <ComboBox fx:id="sentComboBox" layoutX="329.0" layoutY="57.0" promptText="Sent?">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Item 1"/>
+                    <String fx:value="Item 2"/>
+                    <String fx:value="Item 3"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label layoutX="61.0" layoutY="199.0" text="Grade"/>
+        <Slider fx:id="gradeSlider" layoutX="130.0" layoutY="199.0" majorTickUnit="10.0" min="60.0" showTickLabels="true" showTickMarks="true"/>
+        <Button layoutX="329.0" layoutY="238.0" mnemonicParsing="false" onAction="#getFieldsObject" prefHeight="22.0" prefWidth="64.0" text="Add"/>
+        <Label fx:id="invalidField" layoutX="329.0" layoutY="199.0" text="" textFill="#ff3d00"/>
+    </children>
+</AnchorPane>

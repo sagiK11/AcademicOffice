@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="640.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="AcademicOffice.CurrentCoursesController">
+    <children>
+        <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <TextField id="courseNameTextField" fx:id="courseIdTextField" editable="false" layoutX="98.0" layoutY="15.0" prefHeight="31.0" prefWidth="75.0" text="-----"/>
+                        <TextField id="courseIdTextField" fx:id="courseCreditsTextField" editable="false" layoutX="378.0" layoutY="14.0" prefHeight="31.0" prefWidth="30.0" text="--"/>
+                        <TableView fx:id="exercisesTable" layoutX="14.0" layoutY="85.0" prefHeight="200.0" prefWidth="396.0">
+                            <columns>
+                                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Exercise"/>
+                                <TableColumn fx:id="weightColumn" prefWidth="75.0" text="Wieght"/>
+                                <TableColumn fx:id="dueColumn" prefWidth="75.0" text="Due - Date"/>
+                                <TableColumn fx:id="sentColumn" prefWidth="75.0" text="Sent"/>
+                                <TableColumn fx:id="gradeColumn" prefWidth="75.0" text="Grade"/>
+                            </columns>
+                        </TableView>
+                        <Button fx:id="addExamButton" layoutX="453.0" layoutY="322.0" mnemonicParsing="false" onAction="#addExam" prefHeight="32.0" prefWidth="71.0" text="Add Exam"/>
+                        <TableView fx:id="examsTable" layoutX="453.0" layoutY="85.0" prefHeight="200.0" prefWidth="248.0">
+                            <columns>
+                                <TableColumn fx:id="examAttemptColumn" prefWidth="75.0" text="Exam"/>
+                                <TableColumn fx:id="examDateColumn" prefWidth="75.0" text="Date"/>
+                                <TableColumn fx:id="examGradeColumn" prefWidth="75.0" text="Grade"/>
+                            </columns>
+                        </TableView>
+                        <Button fx:id="deleteExamButton" layoutX="618.0" layoutY="322.0" mnemonicParsing="false" onAction="#deleteExam" prefHeight="32.0" prefWidth="83.0" text="Delete Exam"/>
+                        <Button fx:id="addExerciseButton" layoutX="10.0" layoutY="322.0" mnemonicParsing="false" onAction="#addExercise" prefHeight="31.000099999997474" prefWidth="91.0"
+                                text="Add Exercise"/>
+                        <Button fx:id="deleteExerciseButton" layoutX="295.0" layoutY="322.0" mnemonicParsing="false" onAction="#deleteExercise" prefHeight="32.0" prefWidth="115.0"
+                                text="Delete Exercise"/>
+                        <ProgressBar fx:id="progressBar" blendMode="SRC_OVER" cache="true" cacheHint="DEFAULT" depthTest="INHERIT" layoutX="18.0" layoutY="482.0" prefHeight="39.0" prefWidth="666.0"
+                                     progress="0.0"/>
+                        <Label layoutX="20.0" layoutY="432.0" prefHeight="39.0" prefWidth="214.0" text="Course Progress"/>
+                        <Label layoutX="20.0" layoutY="387.0" prefHeight="32.0" prefWidth="155.0" text="Next Exercise Due Date:"/>
+                        <TextField fx:id="nextExerciseDueTextField" layoutX="173.0" layoutY="392.0" prefWidth="91.0" text="----"/>
+                        <Label layoutX="14.0" layoutY="52.0" prefHeight="22.000099999997474" prefWidth="82.0" text="Tasks"/>
+                        <TextField fx:id="courseProgressTextField" layoutX="173.0" layoutY="441.0" prefWidth="91.0" text="----"/>
+                        <ComboBox fx:id="courseComboBox" layoutX="454.0" layoutY="16.0" onAction="#switchCurrentCourse" prefHeight="25.0" prefWidth="244.0" promptText="Current Courses">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Item 1"/>
+                                    <String fx:value="Item 2"/>
+                                    <String fx:value="Item 3"/>
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <Label layoutX="27.0" layoutY="23.0" text="Course Id">
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="273.0" layoutY="19.0" text="Course Credits">
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="533.0" text="0%"/>
+                        <Label layoutX="667.0" layoutY="525.0" text="100%"/>
+                        <Button fx:id="editExerciseButton" layoutX="121.0" layoutY="322.0" mnemonicParsing="false" onAction="#editExercise" prefHeight="31.000099999997474" prefWidth="91.0"
+                                text="Edit Exercise"/>
+                        <Button fx:id="editExamButton" layoutX="531.0" layoutY="322.0" mnemonicParsing="false" onAction="#editExam" prefHeight="32.0" prefWidth="69.0" text="Edit Exam"/>
+                    </children>
+                </AnchorPane>
+            </center>
+            <top>
+                <TextField editable="false" prefHeight="55.0" prefWidth="756.0" text="Current Courses">
+                    <font>
+                        <Font name="System Bold Italic" size="12.0"/>
+                    </font>
+                </TextField>
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>

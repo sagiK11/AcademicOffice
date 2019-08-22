@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="640.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="AcademicOffice.MainController">
+    <children>
+        <SplitPane dividerPositions="0.23547094188376755" focusTraversable="true" prefHeight="640.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <VBox prefHeight="638.0" prefWidth="222.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+                            <children>
+                                <Button fx:id="homeButton" mnemonicParsing="false" onAction="#switchScene" prefHeight="75.0" prefWidth="208.0" text="Home">
+                                    <VBox.margin>
+                                        <Insets bottom="6.0" top="6.0" fx:id="x2"/>
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Button>
+                                <Button fx:id="checkListButton" mnemonicParsing="false" onAction="#switchScene" prefHeight="75.0" prefWidth="208.0" text="Check List" VBox.margin="$x2">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Button>
+                                <Button fx:id="currentCoursesButton" mnemonicParsing="false" onAction="#switchScene" prefHeight="75.0" prefWidth="208.0" text="Current Courses" VBox.margin="$x2">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Button>
+                                <Button fx:id="chatButton" mnemonicParsing="false" onAction="#switchScene" prefHeight="75.0" prefWidth="208.0" text="Chat" VBox.margin="$x2">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Button>
+                                <Button fx:id="coursesButton" mnemonicParsing="false" onAction="#switchScene" prefHeight="75.0" prefWidth="208.0" text="Courses" VBox.margin="$x2">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Button>
+                                <Button fx:id="settingButton" mnemonicParsing="false" onAction="#switchScene" prefHeight="75.0" prefWidth="208.0" text="Setting">
+                                    <VBox.margin>
+                                        <Insets bottom="6.0" top="6.0"/>
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Button>
+                                <Button fx:id="signOutButton" mnemonicParsing="false" onAction="#switchScene" prefHeight="75.0" prefWidth="208.0" text="Sign out &amp; Exit" VBox.margin="$x2">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="rightWindow" minHeight="0.0" minWidth="0.0" prefHeight="638.0" prefWidth="676.0">
+                    <children>
+                        <BorderPane fx:id="borderPane" prefHeight="638.0" prefWidth="760.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                    AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
