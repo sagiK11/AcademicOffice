@@ -2,7 +2,7 @@
 
 ### General Description
 The purpose of the app is to help students keep track of their assignments due dates as well as providing visual course and general year progress.
-In addition, students can use the check list feature and interact with each other via a build in chat.
+In addition, students can use the check list feature and interact with each other via a built in chat.
 
 ### Sample Screenshots (all screenshots can be found at the screenshots directory)
 ###### app home screen
