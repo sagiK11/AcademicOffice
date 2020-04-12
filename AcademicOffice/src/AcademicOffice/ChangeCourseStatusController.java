@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 
 import javafx.fxml.FXML;
@@ -16,8 +16,10 @@ public class ChangeCourseStatusController extends PopupController implements Ini
 
 	@Override
 	FieldsObject getFieldsObject() {
-		FieldsObject fieldsObject = new FieldsObject( );
-		fieldsObject.setChangeCourseStatus( change );
+		FieldsObject fieldsObject = new FieldsObject.Builder( )
+			.changeCourseStatus( change )
+			.build( );
+
 		close( );
 		return fieldsObject;
 	}

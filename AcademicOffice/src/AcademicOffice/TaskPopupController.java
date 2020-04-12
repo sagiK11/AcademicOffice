@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,9 +15,10 @@ public class TaskPopupController extends PopupController implements Initializabl
 
 	@FXML
 	FieldsObject getFieldsObject() {
-		FieldsObject fieldsObject = new FieldsObject( );
 		String taskContent = taskContentTextArea.getText( );
-		fieldsObject.setTaskContent( taskContent );
+		FieldsObject fieldsObject = new FieldsObject.Builder( )
+			.taskContent( taskContent )
+			.build( );
 		close( );
 		return fieldsObject;
 	}

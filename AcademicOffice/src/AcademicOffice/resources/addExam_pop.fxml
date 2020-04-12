@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import java.lang.String?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="addExerciseAnchorPane" prefHeight="250.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="AcademicOffice.ExamPopupController">
+            fx:controller="academicoffice.ExamPopupController">
     <children>
         <Label layoutX="61.0" layoutY="66.0" text="Attempt"/>
         <Label layoutX="61.0" layoutY="107.0" text="Exam Date"/>

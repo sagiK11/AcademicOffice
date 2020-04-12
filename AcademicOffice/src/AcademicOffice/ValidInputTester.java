@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 public class ValidInputTester {
 

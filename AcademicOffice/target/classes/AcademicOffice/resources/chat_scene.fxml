@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="640.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="AcademicOffice.ChatSceneController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="640.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="academicoffice.ChatSceneController">
     <children>
         <BorderPane prefHeight="640.0" prefWidth="767.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>

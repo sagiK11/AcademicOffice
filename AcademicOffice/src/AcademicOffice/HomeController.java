@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable, StudentUpdater {
@@ -57,9 +57,9 @@ public class HomeController implements Initializable, StudentUpdater {
 	}
 
 	private void updateTables() {
-		ArrayList< Course > fallCoursesArrayList = student.getFallCourses( );
-		ArrayList< Course > winterCoursesArrayList = student.getWinterCourses( );
-		ArrayList< Course > summerCoursesArrayList = student.getSummerCourses( );
+		List< Course > fallCoursesArrayList = student.getFallCourses( );
+		List< Course > winterCoursesArrayList = student.getWinterCourses( );
+		List< Course > summerCoursesArrayList = student.getSummerCourses( );
 		double result = 0;
 		float currentYearCoursesNumber = fallCoursesArrayList.size( ) + winterCoursesArrayList.size( ) +
 			summerCoursesArrayList.size( );
@@ -80,7 +80,7 @@ public class HomeController implements Initializable, StudentUpdater {
 	}
 
 
-	private int getCompletedCourses(ArrayList< Course > coursesArrayList) {
+	private int getCompletedCourses(List< Course > coursesArrayList) {
 		int coursesCompletedNumber = 0;
 
 		for ( Course course : coursesArrayList ) {

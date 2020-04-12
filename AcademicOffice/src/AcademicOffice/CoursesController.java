@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -54,23 +54,20 @@ public class CoursesController extends PopupController implements Initializable,
 	}
 
 
-	public void setCourseFields(FieldsObject fieldsObject) {
+	private void setCourseFields(FieldsObject fieldsObject) {
 		boolean courseCompleted = fieldsObject.getCourseStatus( ).equals( Course.COMPLETED );
 		int credInt, gradeInt;
 
 		credInt = Integer.parseInt( fieldsObject.getCourseCredits( ) );
 		gradeInt = Integer.parseInt( fieldsObject.getCourseGrade( ) );
 
-		Course newCourse = new Course( );
-		newCourse.setName( fieldsObject.getCourseName( ) );
-		newCourse.setId( fieldsObject.getCourseId( ) );
-		newCourse.setCredits( credInt );
-		newCourse.setGrade( courseCompleted ? gradeInt : - 1 );
-		newCourse.setStatus( fieldsObject.getCourseStatus( ) );
-		newCourse.setStudentId( student.getId( ) );
-		newCourse.setSemester( fieldsObject.getCourseSemester( ) );
-		newCourse.initialize( );
-
+		Course newCourse = new Course.Builder( fieldsObject.getCourseName( ) , fieldsObject.getCourseId( ) )
+			.credits( credInt )
+			.finalGrade( courseCompleted ? gradeInt : - 1 )
+			.semester( fieldsObject.getCourseSemester( ) )
+			.studentId( student.getId( ) )
+			.status( fieldsObject.getCourseStatus( ) )
+			.build( );
 		Main.dataBaseHandler.addCourseToDateBase( newCourse , student );
 		updateTable( );
 	}
@@ -129,7 +126,7 @@ public class CoursesController extends PopupController implements Initializable,
 	}
 
 	private void updateTable() {
-		ArrayList< Course > courseArrayList = student.getCourseArrayList( );
+		List< Course > courseArrayList = student.getCourseArrayList( );
 		coursesTable.setItems( FXCollections.observableList( courseArrayList ) );
 		setAverageInScene( );
 		setTotalCreditsInScene( );

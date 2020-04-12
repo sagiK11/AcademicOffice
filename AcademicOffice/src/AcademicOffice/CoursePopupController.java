@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,13 +41,14 @@ public class CoursePopupController extends PopupController implements Initializa
 
 	@FXML
 	FieldsObject getFieldsObject() {
-		FieldsObject fieldsObject = new FieldsObject( );
-		fieldsObject.setCourseName( getCourseName( ) );
-		fieldsObject.setCourseCredits( getCourseCredits( ) );
-		fieldsObject.setCourseId( getCourseId( ) );
-		fieldsObject.setCourseStatus( getCourseStatus( ) );
-		fieldsObject.setCourseGrade( getCourseGrade( ) );
-		fieldsObject.setCourseSemester( getCourseSemester( ) );
+		FieldsObject fieldsObject = new FieldsObject.Builder( )
+			.courseName( getCourseName( ) )
+			.courseCredits( getCourseCredits( ) )
+			.courseId( getCourseId( ) )
+			.courseStatus( getCourseStatus( ) )
+			.courseSemester( getCourseSemester( ) )
+			.courseGrade( getCourseGrade( ) )
+			.build( );
 		if( validInput( fieldsObject ) ) {
 			close( );
 		}

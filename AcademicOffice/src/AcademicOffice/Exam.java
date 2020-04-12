@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,6 +15,47 @@ public class Exam {
 	private SimpleIntegerProperty examGrade;
 	private SimpleStringProperty examDate;
 	private SimpleStringProperty examPassed;
+
+	public static class Builder {
+		String attempt, id, date;
+		Integer grade;
+		Boolean isPassed;
+
+		Builder(String attempt , String id) {
+			this.attempt = attempt;
+			this.id = id;
+		}
+
+		Builder date(String date) {
+			this.date = date;
+			return this;
+		}
+
+		Builder grade(Integer grade) {
+			this.grade = grade;
+			return this;
+		}
+
+		Builder isPassed(Boolean isPassed) {
+			this.isPassed = isPassed;
+			return this;
+		}
+
+		Exam build() {
+			Exam exam = new Exam( );
+			exam.setAttempt( this.attempt );
+			exam.setId( this.id );
+			exam.setExamDate( this.date );
+			exam.setGrade( this.grade );
+			exam.setPassed( this.isPassed );
+			return exam;
+		}
+
+	}
+
+	private Exam() {
+
+	}
 
 
 	public String getAttempt() {

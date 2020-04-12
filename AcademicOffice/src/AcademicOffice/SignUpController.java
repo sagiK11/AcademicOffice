@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -34,7 +34,7 @@ public class SignUpController {
 
 	}
 
-	public void setStage(Stage stage) {
+	void setStage(Stage stage) {
 		this.stage = stage;
 	}
 

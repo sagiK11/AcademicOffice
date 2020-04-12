@@ -1,34 +1,66 @@
-package AcademicOffice;
+package academicoffice;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class Student {
-	private String name;
-	private String id;
-	private String major;
-	private String password;
+	private String name, id, major, password;
 	private int totalCredits;
 	private double average;
-	private ArrayList< Course > courseArrayList;
-	private ArrayList< Task > tasksArrayList;
+	private final int COURSE_NUMBER = 25;
+	private List< Course > courseArrayList = new ArrayList<>( COURSE_NUMBER );
+	private List< Task > tasksArrayList = new ArrayList<>( COURSE_NUMBER );
 
-	public Student() {
-		final int COURSE_NUMBER = 25;
-		courseArrayList = new ArrayList<>( COURSE_NUMBER );
-		tasksArrayList = new ArrayList<>( );
-		name = "Missing Name";
-		id = "Missing id";
-		major = "Missing Major";
-		totalCredits = 0;
+
+	public static class Builder {
+		private String name, id, major, password;
+		private int totalCredits;
+		private double average;
+
+		Builder(String name , String id) {
+			this.name = name;
+			this.id = id;
+		}
+
+		Builder major(String major) {
+			this.major = major;
+			return this;
+		}
+
+		Builder password(String password) {
+			this.password = password;
+			return this;
+		}
+
+		Builder totalCredits(int totalCredits) {
+			this.totalCredits = totalCredits;
+			return this;
+		}
+
+		Builder average(double average) {
+			this.average = average;
+			return this;
+		}
+
+		Student build() {
+			Student student = new Student( );
+			student.setName( this.name );
+			student.setId( this.id );
+			student.setMajor( this.major );
+			student.setPassword( this.password );
+			student.setTotalCredits( this.totalCredits );
+			student.setAverage( this.average );
+			return student;
+		}
+
+
 	}
 
-	public Student(String name , String major) {
-		this.name = name;
-		this.major = major;
-	}
+	private Student() {
 
+	}
 
 	private void updateAverage() {
 		int sum = 0;
@@ -111,11 +143,11 @@ public class Student {
 		this.password = password;
 	}
 
-	ArrayList< Course > getCourseArrayList() {
+	List< Course > getCourseArrayList() {
 		return courseArrayList;
 	}
 
-	ArrayList< Course > getFallCourses() {
+	List< Course > getFallCourses() {
 		final String FALL = "a";
 		ArrayList< Course > fallCoursesArrayList = new ArrayList<>( );
 		String year = String.valueOf( Calendar.getInstance( ).get( Calendar.YEAR ) );

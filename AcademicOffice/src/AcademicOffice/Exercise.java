@@ -1,11 +1,11 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 
 public class Exercise {
-	final static String SENT = "Sent", UNSENT = "Unsent";
+	static final String SENT = "Sent", UNSENT = "Unsent";
 	private String name, id;
 	private Integer weight, grade;
 	private Boolean sent;
@@ -16,6 +16,57 @@ public class Exercise {
 	private SimpleIntegerProperty exerciseGrade;
 	private SimpleStringProperty exerciseDue;
 	private SimpleStringProperty exerciseSent;
+
+	public static class Builder {
+		private String name, id;
+		private Integer weight, grade;
+		private Boolean sent;
+		private String due;
+
+		Builder(String name) {
+			this.name = name;
+		}
+
+		Builder id(String id) {
+			this.id = id;
+			return this;
+		}
+
+		Builder weight(Integer weight) {
+			this.weight = weight;
+			return this;
+		}
+
+		Builder grade(Integer grade) {
+			this.grade = grade;
+			return this;
+		}
+
+		Builder sent(Boolean sent) {
+			this.sent = sent;
+			return this;
+		}
+
+		Builder due(String due) {
+			this.due = due;
+			return this;
+		}
+
+		Exercise build() {
+			Exercise exercise = new Exercise( );
+			exercise.setName( this.name );
+			exercise.setId( this.id );
+			exercise.setWeight( this.weight );
+			exercise.setGrade( this.grade );
+			exercise.setDue( this.due );
+			exercise.setSent( this.sent );
+			return exercise;
+		}
+	}
+
+	private Exercise() {
+
+	}
 
 	public String getName() {
 		return name;

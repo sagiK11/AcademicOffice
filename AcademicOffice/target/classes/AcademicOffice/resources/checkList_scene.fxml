@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.CheckListView?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="640.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="AcademicOffice.CheckListController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="640.0" prefWidth="767.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="academicoffice.CheckListController">
     <children>
         <BorderPane prefHeight="640.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <bottom>

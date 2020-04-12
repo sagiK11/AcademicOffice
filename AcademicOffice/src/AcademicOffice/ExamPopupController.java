@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,20 +35,23 @@ public class ExamPopupController extends PopupController implements Initializabl
 
 	@FXML
 	public FieldsObject getFieldsObject() {
-		FieldsObject fieldsObject = new FieldsObject( );
+		FieldsObject fieldsObject = null;
 
 		if( ! deleteWindow ) {
-			fieldsObject.setExamAttempt( getExamAttempt( ) );
-			fieldsObject.setExamDate( getExamDate( ) );
-			fieldsObject.setExamGrade( getExamGrade( ) );
-			fieldsObject.setExamPassed( getExamIsPass( ) );
-
+			fieldsObject = new FieldsObject.Builder( )
+				.examAttempt( getExamAttempt( ) )
+				.examDate( getExamDate( ) )
+				.examGrade( getExamGrade( ) )
+				.examPassed( getExamIsPass( ) )
+				.build( );
 			if( ValidInputTester.validStringArrayInput( fieldsObject.toArray( ) ) )
 				close( );
 		} else {
 
 			if( ValidInputTester.validStringInput( getExamAttempt( ) ) ) {
-				fieldsObject.setExamAttempt( getExamAttempt( ) );
+				fieldsObject = new FieldsObject.Builder( )
+					.examAttempt( getExamAttempt( ) )
+					.build( );
 				close( );
 			}
 		}

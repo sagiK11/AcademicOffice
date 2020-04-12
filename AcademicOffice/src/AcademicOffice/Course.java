@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -6,15 +6,11 @@ import javafx.beans.property.SimpleStringProperty;
 import java.util.ArrayList;
 
 public class Course {
-	final static String COMPLETED = "Completed", IN_STUDY = "In Study";
-	final static String REGISTERED = "Registered", FAILED = "Failed";
-	private String name;
-	private String id;
-	private Integer credits;
-	private Integer finalGrade;
-	private String status;
-	private String studentId;
-	private String semester;
+	static final String COMPLETED = "Completed", IN_STUDY = "In Study";
+	static final String REGISTERED = "Registered", FAILED = "Failed";
+	private String name, id, status, studentId, semester;
+	private Integer credits, finalGrade;
+
 	private ArrayList< Exercise > exerciseArrayList = new ArrayList<>( );
 	private ArrayList< Exam > examsArrayList = new ArrayList<>( );
 	private SimpleStringProperty courseName;
@@ -24,23 +20,54 @@ public class Course {
 	private SimpleStringProperty courseStatus;
 	private SimpleStringProperty courseSemester;
 
+	public static class Builder {
+		private String name, id, status, studentId, semester;
+		private Integer credits, finalGrade;
 
-	public Course(String name , String id , Integer credits) {
-		this.name = name;
-		this.id = id;
-		this.credits = credits;
-		this.finalGrade = 80;
+		Builder(String name , String id) {
+			this.name = name;
+			this.id = id;
+		}
+
+		Builder status(String status) {
+			this.status = status;
+			return this;
+		}
+
+		Builder studentId(String studentId) {
+			this.studentId = studentId;
+			return this;
+		}
+
+		Builder semester(String semester) {
+			this.semester = semester;
+			return this;
+		}
+
+		Builder credits(Integer credits) {
+			this.credits = credits;
+			return this;
+		}
+
+		Builder finalGrade(Integer finalGrade) {
+			this.finalGrade = finalGrade;
+			return this;
+		}
+
+		Course build() {
+			Course course = new Course( );
+			course.setName( this.name );
+			course.setId( this.id );
+			course.setSemester( this.semester );
+			course.setStatus( this.status );
+			course.setStudentId( this.studentId );
+			course.setCredits( this.credits );
+			course.setGrade( this.finalGrade );
+			return course;
+		}
 	}
 
-	public Course(String name , String id , Integer credits , Integer grade , String status) {
-		this.name = name;
-		this.id = id;
-		this.credits = credits;
-		this.finalGrade = grade;
-		this.status = status;
-	}
-
-	public Course() {
+	private Course() {
 	}
 
 	public void initialize() {

@@ -4,5 +4,5 @@ module javafx {
 	requires java.sql;
 	requires org.controlsfx.controls;
 
-	opens AcademicOffice;
+	opens academicoffice;
 }

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="150.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="AcademicOffice.ChangeCourseStatusController">
+            fx:controller="academicoffice.ChangeCourseStatusController">
     <children>
         <Label layoutX="45.0" layoutY="34.0" prefHeight="40.0" prefWidth="351.0" text="Would you like to change course status to Completed?"/>
         <Button fx:id="noButton" layoutX="68.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="No"/>

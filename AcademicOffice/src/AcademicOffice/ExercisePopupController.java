@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,22 +35,25 @@ public class ExercisePopupController extends PopupController implements Initiali
 
 	@FXML
 	public FieldsObject getFieldsObject() {
-		FieldsObject fieldsObject = new FieldsObject( );
+		FieldsObject fieldsObject = null;
 
 		if( ! deleteWindow ) {
-			fieldsObject.setExerciseName( getExerciseName( ) );
-			fieldsObject.setExerciseWeight( getExerciseWeight( ) );
-			fieldsObject.setExerciseDue( getExerciseDate( ) );
-			fieldsObject.setExerciseSent( getExerciseIsSent( ) );
-			fieldsObject.setExerciseGrade( getExerciseGrade( ) );
-
+			fieldsObject = new FieldsObject.Builder( ).
+				exerciseName( getExerciseName( ) )
+				.exerciseWeight( getExerciseWeight( ) )
+				.exerciseDue( getExerciseDate( ) )
+				.exerciseGrade( getExerciseGrade( ) )
+				.exerciseSent( getExerciseIsSent( ) )
+				.build( );
 			if( ValidInputTester.validStringArrayInput( fieldsObject.toArray( ) ) )
 				close( );
 			else
 				setInvalidFieldToast( );
 		} else {
 			if( ValidInputTester.validStringInput( getExerciseName( ) ) ) {
-				fieldsObject.setExerciseName( getExerciseName( ) );
+				fieldsObject = new FieldsObject.Builder( )
+					.exerciseName( getExerciseName( ) )
+					.build( );
 				close( );
 			}
 		}

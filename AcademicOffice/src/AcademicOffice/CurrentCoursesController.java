@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CurrentCoursesController implements Initializable, StudentUpdater {
@@ -138,15 +139,15 @@ public class CurrentCoursesController implements Initializable, StudentUpdater {
 	}
 
 	private void setExercisesFields() {
-		Exercise newExercise = new Exercise( );
+
 		int weightInt = Integer.parseInt( fieldsObject.getExerciseWeight( ) );
 		int grade = Integer.parseInt( fieldsObject.getExerciseGrade( ) );
-
-		newExercise.setName( fieldsObject.getExerciseName( ) );
-		newExercise.setWeight( weightInt );
-		newExercise.setGrade( fieldsObject.getExerciseSent( ).equals( Exercise.UNSENT ) ? - 1 : grade );
-		newExercise.setSent( fieldsObject.getExerciseSent( ).equals( Exercise.SENT ) );
-		newExercise.setDue( fieldsObject.getExerciseDue( ) );
+		Exercise newExercise = new Exercise.Builder( fieldsObject.getExerciseName( ) )
+			.sent( fieldsObject.getExerciseSent( ).equals( Exercise.SENT ) )
+			.weight( weightInt )
+			.grade( fieldsObject.getExerciseSent( ).equals( Exercise.UNSENT ) ? - 1 : grade )
+			.due( fieldsObject.getExerciseDue( ) )
+			.build( );
 		newExercise.initialize( );
 
 		Main.dataBaseHandler.addExerciseToDataBase( newExercise , currentCourse );
@@ -164,15 +165,14 @@ public class CurrentCoursesController implements Initializable, StudentUpdater {
 	}
 
 	private void setExamFieldsInDataBase(boolean addExam) {
-		Exam newExam = new Exam( );
 		int gradeInt = ( int ) Double.parseDouble( fieldsObject.getExamGrade( ) );
 		boolean passed = fieldsObject.getExamPassed( ).equals( Exam.PASSED );
 
-		newExam.setAttempt( fieldsObject.getExamAttempt( ) );
-		newExam.setExamDate( fieldsObject.getExamDate( ) );
-		newExam.setGrade( passed ? gradeInt : - 1 );
-		newExam.setPassed( passed );
-		newExam.setId( currentCourse.getId( ) );
+		Exam newExam = new Exam.Builder( fieldsObject.getExamAttempt( ) , currentCourse.getId( ) )
+			.isPassed( passed )
+			.grade( passed ? gradeInt : - 1 )
+			.date( fieldsObject.getExamDate( ) )
+			.build( );
 		newExam.initialize( );
 
 		if( addExam )
@@ -186,18 +186,17 @@ public class CurrentCoursesController implements Initializable, StudentUpdater {
 	}
 
 	private void updateExerciseFields() {
-		Exercise newExercise = new Exercise( );
+
 		int weightInt = ( int ) Double.parseDouble( fieldsObject.getExerciseWeight( ) );
 		int grade = Integer.parseInt( fieldsObject.getExerciseGrade( ) );
-
-		newExercise.setName( fieldsObject.getExerciseName( ) );
-		newExercise.setDue( fieldsObject.getExerciseDue( ) );
-		newExercise.setWeight( weightInt );
-		newExercise.setGrade( fieldsObject.getExerciseSent( ).equals( Exercise.SENT ) ? grade : - 1 );
-		newExercise.setSent( fieldsObject.getExerciseSent( ).equals( Exercise.SENT ) );
-		newExercise.setId( currentCourse.getId( ) );
+		Exercise newExercise = new Exercise.Builder( fieldsObject.getExerciseName( ) )
+			.due( fieldsObject.getExerciseDue( ) )
+			.weight( weightInt )
+			.grade( fieldsObject.getExerciseSent( ).equals( Exercise.SENT ) ? grade : - 1 )
+			.sent( fieldsObject.getExerciseSent( ).equals( Exercise.SENT ) )
+			.id( currentCourse.getId( ) )
+			.build( );
 		newExercise.initialize( );
-
 		Main.dataBaseHandler.updateExercise( newExercise , currentCourse );
 		updateScene( );
 	}
@@ -216,7 +215,7 @@ public class CurrentCoursesController implements Initializable, StudentUpdater {
 	}
 
 	private void setCurrentCourse(String currentCourseName) {
-		ArrayList< Course > currentCoursesArrayList = getCurrentCourses( );
+		List< Course > currentCoursesArrayList = getCurrentCourses( );
 
 		for ( Course course : currentCoursesArrayList ) {
 			if( course.getName( ).equals( currentCourseName ) ) {
@@ -340,7 +339,7 @@ public class CurrentCoursesController implements Initializable, StudentUpdater {
 
 	private void setCurrentCoursesInComboBox() {
 		courseComboBox.getItems( ).clear( );
-		ArrayList< Course > currentCoursesArrayList = getCurrentCourses( );
+		List< Course > currentCoursesArrayList = getCurrentCourses( );
 
 		for ( Course course : currentCoursesArrayList ) {
 			courseComboBox.getItems( ).add( course.getName( ) );
@@ -391,9 +390,9 @@ public class CurrentCoursesController implements Initializable, StudentUpdater {
 		return ! cancelAction;
 	}
 
-	private ArrayList< Course > getCurrentCourses() {
-		ArrayList< Course > courseArrayList = student.getCourseArrayList( );
-		ArrayList< Course > resultArrayList = new ArrayList<>( );
+	private List< Course > getCurrentCourses() {
+		List< Course > courseArrayList = student.getCourseArrayList( );
+		List< Course > resultArrayList = new ArrayList<>( );
 
 		for ( Course course : courseArrayList )
 			if( course.getStatus( ).equals( Course.IN_STUDY ) )

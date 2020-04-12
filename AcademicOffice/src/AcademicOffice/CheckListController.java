@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -104,12 +104,11 @@ public class CheckListController implements Initializable, StudentUpdater {
 
 	private void createNewTask(FieldsObject fieldsObject) {
 		String taskContent = fieldsObject.getTaskContent( );
-		Task newTask = new Task( );
-		newTask.setContent( taskContent );
-		newTask.setChecked( false );
-		newTask.setTodayTask( true );
-		newTask.setDate( DateFormatHandler.getCurrentDate( ) );
-		newTask.setStudentId( student.getId( ) );
+		Task newTask = new Task.Builder( taskContent , student.getId( ) )
+			.isTodayTask( true )
+			.date( DateFormatHandler.getCurrentDate( ) )
+			.isChecked( false )
+			.build( );
 		Main.dataBaseHandler.addTaskToDateBase( newTask , student );
 	}
 

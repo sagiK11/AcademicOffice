@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,11 +8,20 @@ class DataBaseHandler {
 
 	private Connection conn;
 	private Student student;
+	private final int COLUMN_INDEX_ONE = 1;
+	private final int COLUMN_INDEX_TWO = 2;
+	private final int COLUMN_INDEX_THREE = 3;
+	private final int COLUMN_INDEX_FOUR = 4;
+	private final int COLUMN_INDEX_FIVE = 5;
+	private final int COLUMN_INDEX_SIX = 6;
+	private final int COLUMN_INDEX_SEVEN = 7;
+	private final int COLUMN_INDEX_EIGHT = 8;
 
 	Connection connect() {
 		final String url = "jdbc:postgresql://localhost:5432/AcademicOffice";
 		final String user = "postgres";
-		final String password = "classified myfriend";
+		final String password = "classified my friend";
+
 
 		try {
 			conn = DriverManager.getConnection( url , user , password );
@@ -308,88 +317,90 @@ class DataBaseHandler {
 				"  WHERE STUDENTID = " + "\'" + student.getId( ) + "\'";
 
 		executePreparedStatement( sqlQuery );
+
 	}
 
 	private Student composeNewStudent(ResultSet resultSet) throws SQLException {
-		Integer studentAverage = ( Integer ) resultSet.getObject( 1 );
-		String studentMajor = ( String ) resultSet.getObject( 2 );
-		String studentName = ( String ) resultSet.getObject( 3 );
-		String studentPassword = ( String ) resultSet.getObject( 4 );
-		String studentId = ( String ) resultSet.getObject( 5 );
-		Integer studentTotalCredits = ( Integer ) resultSet.getObject( 6 );
+		Integer studentAverage = ( Integer ) resultSet.getObject( COLUMN_INDEX_ONE );
+		String studentMajor = ( String ) resultSet.getObject( COLUMN_INDEX_TWO );
+		String studentName = ( String ) resultSet.getObject( COLUMN_INDEX_THREE );
+		String studentPassword = ( String ) resultSet.getObject( COLUMN_INDEX_FOUR );
+		String studentId = ( String ) resultSet.getObject( COLUMN_INDEX_FIVE );
+		Integer studentTotalCredits = ( Integer ) resultSet.getObject( COLUMN_INDEX_SIX );
 
-		Student newStudent = new Student( );
-		newStudent.setName( studentName );
-		newStudent.setId( studentId );
-		newStudent.setPassword( studentPassword );
-		newStudent.setMajor( studentMajor );
-		newStudent.setAverage( studentAverage );
-		newStudent.setTotalCredits( studentTotalCredits );
-
-		return newStudent;
+		return new Student.Builder( studentName , studentId )
+			.major( studentMajor )
+			.password( studentPassword )
+			.totalCredits( studentTotalCredits )
+			.average( studentAverage )
+			.build( );
 	}
 
 	private Course composeNewCourse(ResultSet resultSet) throws SQLException {
-		String courseId = ( String ) resultSet.getObject( 1 );
-		Integer courseCredit = ( Integer ) resultSet.getObject( 2 );
-		Integer courseGrade = ( Integer ) resultSet.getObject( 3 );
-		String courseStatus = ( String ) resultSet.getObject( 4 );
-		String studentId = ( String ) resultSet.getObject( 6 );
-		String courseName = ( String ) resultSet.getObject( 7 );
-		String courseSemester = ( String ) resultSet.getObject( 8 );
+		String courseId = ( String ) resultSet.getObject( COLUMN_INDEX_ONE );
+		Integer courseCredit = ( Integer ) resultSet.getObject( COLUMN_INDEX_TWO );
+		Integer courseGrade = ( Integer ) resultSet.getObject( COLUMN_INDEX_THREE );
+		String courseStatus = ( String ) resultSet.getObject( COLUMN_INDEX_FOUR );
+		String studentId = ( String ) resultSet.getObject( COLUMN_INDEX_SIX );
+		String courseName = ( String ) resultSet.getObject( COLUMN_INDEX_SEVEN );
+		String courseSemester = ( String ) resultSet.getObject( COLUMN_INDEX_EIGHT );
 
-		Course newCourse = new Course( );
-		newCourse.setName( courseName );
-		newCourse.setId( courseId );
-		newCourse.setCredits( courseCredit );
-		newCourse.setGrade( courseGrade != null ? courseGrade : - 1 );
-		newCourse.setStatus( courseStatus );
-		newCourse.setStudentId( studentId );
-		newCourse.setSemester( courseSemester );
+		Course newCourse = new Course.Builder( courseName , courseId )
+			.semester( courseSemester )
+			.status( courseStatus )
+			.studentId( studentId )
+			.credits( courseCredit )
+			.finalGrade( courseGrade )
+			.build( );
 		newCourse.initialize( );
-
 		return newCourse;
-
 	}
 
 	private Exercise composeNewExercise(ResultSet resultSet) throws SQLException {
-		String exerciseName = ( String ) resultSet.getObject( 1 );
-		Integer exerciseWeight = ( Integer ) resultSet.getObject( 2 );
-		Boolean exerciseSent = ( Boolean ) resultSet.getObject( 3 );
-		Integer exerciseGrade = ( Integer ) resultSet.getObject( 4 );
-		String exerciseId = ( String ) resultSet.getObject( 5 );
-		String exerciseDue = ( String ) resultSet.getObject( 6 );
+		String exerciseName = ( String ) resultSet.getObject( COLUMN_INDEX_ONE );
+		Integer exerciseWeight = ( Integer ) resultSet.getObject( COLUMN_INDEX_TWO );
+		Boolean exerciseSent = ( Boolean ) resultSet.getObject( COLUMN_INDEX_THREE );
+		Integer exerciseGrade = ( Integer ) resultSet.getObject( COLUMN_INDEX_FOUR );
+		String exerciseId = ( String ) resultSet.getObject( COLUMN_INDEX_FIVE );
+		String exerciseDue = ( String ) resultSet.getObject( COLUMN_INDEX_SIX );
 
-		Exercise newExercise = new Exercise( );
-		newExercise.setName( exerciseName );
-		newExercise.setId( exerciseId );
-		newExercise.setWeight( exerciseWeight );
-		newExercise.setGrade( exerciseGrade != null ? exerciseGrade : - 1 );
-		newExercise.setSent( exerciseSent );
-		newExercise.setDue( exerciseDue );
+		Exercise newExercise = new Exercise.Builder( exerciseName )
+			.id( exerciseId )
+			.weight( exerciseWeight )
+			.due( exerciseDue )
+			.grade( exerciseGrade )
+			.sent( exerciseSent )
+			.build( );
 		newExercise.initialize( );
-
 		return newExercise;
 	}
 
 	private Exam composeNewExam(ResultSet resultSet) throws SQLException {
-		String exmAttempt = ( String ) resultSet.getObject( 1 );
-		String exmDate = ( String ) resultSet.getObject( 2 );
-		Integer exmGrade = ( Integer ) resultSet.getObject( 3 );
-		Boolean exmPassed = ( Boolean ) resultSet.getObject( 4 );
-		String courseid = ( String ) resultSet.getObject( 5 );
-		String studentid = ( String ) resultSet.getObject( 6 );
+		String examAttempt = ( String ) resultSet.getObject( COLUMN_INDEX_ONE );
+		String examDate = ( String ) resultSet.getObject( COLUMN_INDEX_TWO );
+		Integer examGrade = ( Integer ) resultSet.getObject( COLUMN_INDEX_THREE );
+		Boolean examPassed = ( Boolean ) resultSet.getObject( COLUMN_INDEX_FOUR );
+		String courseId = ( String ) resultSet.getObject( COLUMN_INDEX_FIVE );
 
-
-		Exam newExam = new Exam( );
-		newExam.setAttempt( exmAttempt );
-		newExam.setGrade( exmGrade != null ? exmGrade : - 1 );
-		newExam.setPassed( exmPassed );
-		newExam.setExamDate( exmDate );
-		newExam.setId( courseid );
+		Exam newExam = new Exam.Builder( examAttempt , courseId )
+			.date( examDate )
+			.grade( examGrade )
+			.isPassed( examPassed )
+			.build( );
 		newExam.initialize( );
-
 		return newExam;
+	}
+
+	private Task composeNewTask(ResultSet resultSet) throws SQLException {
+		String taskContent = ( String ) resultSet.getObject( COLUMN_INDEX_ONE );
+		String studentId = ( String ) resultSet.getObject( COLUMN_INDEX_TWO );
+		Boolean isChecked = ( Boolean ) resultSet.getObject( COLUMN_INDEX_THREE );
+		String dateCreated = ( String ) resultSet.getObject( COLUMN_INDEX_FOUR );
+
+		return new Task.Builder( taskContent , studentId )
+			.isChecked( isChecked )
+			.date( dateCreated )
+			.build( );
 	}
 
 	private ArrayList< Course > getAllCourses(Student student) {
@@ -433,19 +444,5 @@ class DataBaseHandler {
 		return tasksArrayList;
 	}
 
-	private Task composeNewTask(ResultSet resultSet) throws SQLException {
-		String taskContent = ( String ) resultSet.getObject( 1 );
-		String studentId = ( String ) resultSet.getObject( 2 );
-		Boolean isChecked = ( Boolean ) resultSet.getObject( 3 );
-		String dateCreated = ( String ) resultSet.getObject( 4 );
-
-		Task newTask = new Task( );
-		newTask.setContent( taskContent );
-		newTask.setStudentId( studentId );
-		newTask.setChecked( isChecked );
-		newTask.setDate( dateCreated );
-
-		return newTask;
-	}
 
 }

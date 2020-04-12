@@ -1,4 +1,4 @@
-package AcademicOffice;
+package academicoffice;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
