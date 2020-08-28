@@ -1,4 +1,5 @@
 # AcademicOffice
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/DAVFoundation/captain-n3m0/blob/master/LICENSE)
 
 ### General Description
 The purpose of the app is to help students keep track of their assignments due dates as well as providing visual course and general year progress.
